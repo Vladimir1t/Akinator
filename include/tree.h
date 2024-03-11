@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <locale.h>
 #include <conio.h>
-#include <graphviz/cgraph.h>
+//#include <graphviz/cgraph.h>
 
 #include "..\library\errors.h"
 
@@ -26,16 +26,18 @@ struct node_tree
 
 void tree_print (struct node_tree* node);
 
-int node_insert (struct node_tree* node);
+int node_search (struct node_tree* node);
 
 void tree_dtor (struct node_tree* node);
 
-struct node_tree* tree_search (struct node_tree* node, elem_t elem);
+//struct node_tree* tree_search (struct node_tree* node, elem_t elem);
+
+int node_insert (struct node_tree* node);
 
 void clean_buffer ();
 
-void save_graphviz (Agraph_t *graph, const char* filename);
+//void save_graphviz (Agraph_t *graph, const char* filename);
 
-void build_graphviz(struct node_tree* root, Agraph_t* graph);
+//void build_graphviz(struct node_tree* root, Agraph_t* graph);
 
 #endif // TREE_H_INCLUDED

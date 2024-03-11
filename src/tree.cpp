@@ -1,11 +1,8 @@
 #include "..\include\tree.h"
 
-int node_insert (struct node_tree* node)
+int node_search (struct node_tree* node)
 {
-    struct node_tree* node_new_left  = {0};
-    struct node_tree* node_new_right = {0};
-    char* information = (char*) calloc (DATA_SIZE, sizeof(char));
-    char              choice         = '\0';
+    char choice = '\0';
 
     while (1)
     {
@@ -23,11 +20,6 @@ int node_insert (struct node_tree* node)
         {
             if (node->right == NULL)
             {
-                //printf (" Is it %s ?\n", node->data);
-                //printf ("( y, n )\n");
-                //scanf ("%c", &choice);
-                //clean_buffer ();
-
                 if (choice != 'y' && choice != 'n')
                     return INPUT_ERROR;
 
@@ -39,33 +31,7 @@ int node_insert (struct node_tree* node)
 
                 else if (choice == 'n')
                 {
-                    node_new_left  = (struct node_tree*) calloc (1, sizeof (struct node_tree));
-                    node_new_right = (struct node_tree*) calloc (1, sizeof (struct node_tree));
-
-                    node_new_right->data = (char*) calloc (DATA_SIZE, sizeof(char)); // who
-                    printf (" What/Who is it? \n");
-                    scanf ("%s", node_new_right->data);
-                    //printf ("..%s..\n", node_new_right->data);
-                    clean_buffer ();
-                    //printf ("right << %s >>\n", node_new_right)
-
-                    node_new_left->data = (char*) calloc (DATA_SIZE, sizeof(char));
-                    node_new_left->data = node->data;   // put prev leaf in new node
-                    printf (" What is unique about it/him? \n");
-                    scanf ("%s", information);
-                    node->data = information;
-                    //printf ("..%s..\n", node->data);
-
-                    //
-                    node->right = node_new_right;
-                    node->left  = node_new_left;
-
-                    node_new_right->left = NULL;
-                    node_new_right->right = NULL;
-                    node_new_left->left = NULL;
-                    node_new_left->left = NULL;
-
-                    return SUCCESS;
+                    node_insert (node);
                 }
                 //node->left = node_new;
                 //break;
@@ -77,11 +43,6 @@ int node_insert (struct node_tree* node)
         {
             if (node->left == NULL)
             {
-                //printf (" Is it %s ?\n", node->data);
-                //printf ("( y, n )\n");
-                //scanf ("%c", &choice);
-                //clean_buffer ();
-
                 if (choice != 'y' && choice != 'n')
                     return INPUT_ERROR;
 
@@ -93,28 +54,8 @@ int node_insert (struct node_tree* node)
 
                 else if (choice == 'n')
                 {
-                    node_new_left  = (struct node_tree*) calloc (1, sizeof (struct node_tree));
-                    node_new_right = (struct node_tree*) calloc (1, sizeof (struct node_tree));
-
-                    node_new_right->data = (char*) calloc (DATA_SIZE, sizeof(char)); // who
-                    printf (" What/Who is it? \n");
-                    scanf ("%s", node_new_right->data);
-                    clean_buffer ();
-                    //printf ("right << %s >>\n", node_new_right)
-
-                    node_new_left->data = (char*) calloc (DATA_SIZE, sizeof(char));
-                    node_new_left->data = node->data;   // put prev leaf in new node
-                    printf (" What is unique about it/him? \n");
-                    scanf ("%s", information);
-                    node->data = information;
-                    //
-                    node->right = node_new_right;
-                    node->left  = node_new_left;
-
-                    return SUCCESS;
+                    node_insert (node);
                 }
-                //node->left = node_new;
-                //break;
             }
             else
                 node = node->left;
@@ -147,6 +88,34 @@ void tree_print (struct node_tree* node)
     printf ("} ");
 }
 
+int node_insert (struct node_tree* node)
+{
+    struct node_tree* node_new_left  = {0};
+    struct node_tree* node_new_right = {0};
+    char* information = (char*) calloc (DATA_SIZE, sizeof(char));
+
+    node_new_left  = (struct node_tree*) calloc (1, sizeof (struct node_tree));
+    node_new_right = (struct node_tree*) calloc (1, sizeof (struct node_tree));
+
+    node_new_right->data = (char*) calloc (DATA_SIZE, sizeof(char)); // who
+    printf (" What/Who is it? \n");
+    scanf ("%s", node_new_right->data);
+    clean_buffer ();
+    //printf ("right << %s >>\n", node_new_right)
+
+    node_new_left->data = (char*) calloc (DATA_SIZE, sizeof(char));
+    node_new_left->data = node->data;   // put prev leaf in new node
+    printf (" What is unique about it/him? \n");
+    scanf ("%s", information);
+    node->data = information;
+        //
+    node->right = node_new_right;
+    node->left  = node_new_left;
+
+    return SUCCESS;
+}
+
+ /*
 struct node_tree* tree_search (struct node_tree* node, elem_t elem)
 {
     while (1)
@@ -177,7 +146,7 @@ struct node_tree* tree_search (struct node_tree* node, elem_t elem)
                 node = node->right;
         }
     }
-}
+}       */
 
 void clean_buffer ()
 {
@@ -189,7 +158,7 @@ void clean_buffer ()
     while (symbol != '\n' && symbol != EOF);
 }
 
-
+/*
 void build_graphviz (struct node_tree* root, Agraph_t* graph)
 {
     if (root == NULL)
@@ -226,4 +195,4 @@ void save_graphviz (Agraph_t *graph, const char* filename)
     agwrite (graph, file);
     fclose (file);
 }
-
+     */

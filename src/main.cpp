@@ -18,14 +18,14 @@ int main()
     char mode = '\0';
     while (mode != 's')
     {
-        node_insert (tree);
+        node_search (tree);
         printf ("write 's' to stop the program\n");
         scanf ("%c", &mode);
     }
 
     tree_print (tree);
 
-     // Создать граф Graphviz
+    /*// Создать граф Graphviz
     Agraph_t *graph = agopen ("tree", Agdirected, NULL);
 
     // Построить граф из дерева
@@ -35,7 +35,7 @@ int main()
     save_graphviz (graph, "tree.dot");
 
     // Освободить память
-    agclose (graph);
+    agclose (graph);      */
 
     tree_dtor (tree);
 
