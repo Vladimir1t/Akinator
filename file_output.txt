@@ -1,0 +1,1 @@
+{человек{dog{black{Полторашка}{valy}}{jack}}{blond{Physicist{mentor{Дед}{Alexey}}{Ovchos}}{Vova}}}

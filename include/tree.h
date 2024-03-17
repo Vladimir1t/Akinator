@@ -9,6 +9,8 @@
 //#include <graphviz/cgraph.h>
 
 #include "..\library\errors.h"
+#include "..\library\DSL.h"
+#include "..\stack\include\stack.h"
 
 #define SPEC "%s"
 
@@ -24,17 +26,23 @@ struct node_tree
     struct node_tree* right;
 };
 
-void tree_print (struct node_tree* node);
-
-int node_search (struct node_tree* node);
+int run_acinator (struct node_tree* node);
 
 void tree_dtor (struct node_tree* node);
 
-//struct node_tree* tree_search (struct node_tree* node, elem_t elem);
+int node_search (struct node_tree* node, elem_t elem);
 
-int node_insert (struct node_tree* node);
+int node_insert (struct node_tree* node, struct node_tree* root);
+
+int add_discription (struct node_tree* node);
 
 void clean_buffer ();
+
+int tree_output (FILE* file_output, struct node_tree* node);
+
+int get_database (struct node_tree*, char* file_input);
+
+size_t file_size_measure (FILE* const file_p);
 
 //void save_graphviz (Agraph_t *graph, const char* filename);
 
