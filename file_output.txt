@@ -1,1 +1,1 @@
-{человек{dog{black{Полторашка}{valy}}{jack}}{blond{Physicist{mentor{Дед}{Alexey}}{Ovchos}}{Vova}}}
+{human{dog{black{1,5}{valy}}{jack}}{blond{Physists{Ded}{Ovchos}}{mentor{Vova}{Alexey}}}}

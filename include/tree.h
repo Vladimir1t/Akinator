@@ -19,11 +19,18 @@ const elem_t POISON = '\0';
 
 const int DATA_SIZE = 17;
 
+enum Position
+{
+    LEFT  = 0,
+    RIGHT = 1
+};
+
 struct node_tree
 {
     elem_t data;
     struct node_tree* left;
     struct node_tree* right;
+    size_t            num_in_tree;
 };
 
 int run_acinator (struct node_tree* node);
@@ -42,7 +49,15 @@ int tree_output (FILE* file_output, struct node_tree* node);
 
 int get_database (struct node_tree*, char* file_input);
 
+int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_size);
+
 size_t file_size_measure (FILE* const file_p);
+
+int build_graphviz (struct node_tree* root);
+
+void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num);
+
+void add_node_in_graph_2 (struct node_tree* node, FILE* file_graph);
 
 //void save_graphviz (Agraph_t *graph, const char* filename);
 

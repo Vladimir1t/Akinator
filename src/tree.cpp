@@ -20,39 +20,25 @@ int run_acinator (struct node_tree* node)
         {
             if (node->right == NULL)
             {
-                if (choice == 'y')
-                {
-                    printf (" Oh, yes! \n");
-                    return SUCCESS;
-                }
-
-                else if (choice == 'n')
-                {
-                    node_insert (node, root);
-                    break;
-                }
+                printf (" Oh, yes! \n");
+                return SUCCESS;
             }
             else
+            {
                 node = node->right;
+            }
         }
         else if (choice == 'n')
         {
             if (node->left == NULL)
             {
-                if (choice == 'y')
-                {
-                    printf (" Oh, yes! \n");
-                    return SUCCESS;
-                }
-
-                else if (choice == 'n')
-                {
-                    node_insert (node, root);
-                    break;
-                }
+                node_insert (node, root);
+                break;
             }
             else
+            {
                 node = node->left;
+            }
         }
     }
     return SUCCESS;
@@ -112,7 +98,6 @@ int add_discription (struct node_tree* node)
     return SUCCESS;
 }
 
-
 int node_search (struct node_tree* node, elem_t elem)
 {
     if (node == NULL)
@@ -159,11 +144,6 @@ int tree_output (FILE* file_output, struct node_tree* node)
 
 int get_database (struct node_tree* root, char* file_input)   // get data of tree in the following file
 {
-
-    struct node_tree* prev_node = NULL;
-    struct node_tree* node      = NULL;
-    struct stack      stk       = {0};
-
     FOPEN (file_p, file_input, "r")
     size_t file_size = file_size_measure (file_p);            // measures the size of a text
     //printf ("size of file: %d\n", file_size);
@@ -179,9 +159,20 @@ int get_database (struct node_tree* root, char* file_input)   // get data of tre
     }
     fclose (file_p);
 
-    for (int i = 0, n = 0, position = 0; i < file_size; i++)
+    construct_data_nodes (root, text_data, file_size);
+
+    return SUCCESS;
+}
+
+int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_size)
+{
+    struct node_tree* prev_node = NULL;
+    struct node_tree* node      = NULL;
+    struct stack      stk       = {0};
+
+    for (int i = 0, n = 0, position = LEFT; i < file_size; i++)
     {
-        if (text_data[i] == '{' && i == 0)                  // add a root of the tree
+        if (text_data[i] == '{' && i == 0)       // add a root of the tree
         {
             i++;
             while (text_data[i] != '{' && text_data[i] != '}')
@@ -195,9 +186,8 @@ int get_database (struct node_tree* root, char* file_input)   // get data of tre
 
             stack_push (&stk, &root);
             stack_push (&stk, &root);
-            position += 2;
         }
-        if (text_data[i] == '{')
+        if (text_data[i] == '{')              // add node in tree
         {
             i++;
             struct node_tree* node = NULL;
@@ -211,25 +201,26 @@ int get_database (struct node_tree* root, char* file_input)   // get data of tre
                 i++;
                 n++;
             }
+
             node->data[n] = '\0';
-            //printf ("<< %s >>\n", node->data);
+            printf ("<< %s >>\n", node->data);
             stack_pop (&stk, &prev_node);
 
-            if (position % 2 == 0)         // add node as a left leaf
+            if (position == LEFT)          // add node as a left leaf
                 prev_node->left = node;
-            if (position % 2 == 1)         // add node as a right leaf
+            else                           // add node as a right leaf
                 prev_node->right = node;
 
             if (text_data[i] == '{')
             {
                 stack_push (&stk, &node);
                 stack_push (&stk, &node);
-                position += 2;
+                position = LEFT;
             }
             i--;
         }
         else if (text_data[i] == '}')
-            position--;
+            position = RIGHT;
     }
     stack_dtor (&stk);
 
@@ -251,47 +242,82 @@ size_t file_size_measure (FILE* const file_p)
 }
 
 
- /*
+
 int compare (struct node_tree* root, char* first_elem, char* second_elem)
 {
 
 }
 
-/*
-void build_graphviz (struct node_tree* root, Agraph_t* graph)
+int build_graphviz (struct node_tree* root)
 {
+    size_t node_num = 0;
     if (root == NULL)
-    {
-        return;
-    }
+        return ERROR;
 
-    // Создать узел для текущего узла дерева
-    Agnode_t* current_node = agnode (graph, NULL, 1);
-    agset (current_node, "label", agstrdup(graph, "%d", root->data));
+    FOPEN (file_graph, "graph.dot", "w")
 
-    // Рекурсивно построить граф для левого и правого поддеревьев
-    if (root->left != NULL)
-    {
-        Agnode_t* left_node = agnode (graph, NULL, 1);
-        agset (left_node, "label", agstrdup (graph, "%d", root->left->data));
-        agedge (graph, current_node, left_node, NULL, 1);
-        build_graphviz (root->left, graph);
-    }
+    fprintf (file_graph, "digraph test{\n"
+    "node [shape= record ];\n"
+    "edge [style= filled ];\n");
 
-    if (root->right != NULL)
-    {
-        Agnode_t* right_node = agnode (graph, NULL, 1);
-        agset (right_node, "label", agstrdup(graph, "%d", root->right->data));
-        agedge (graph, current_node, right_node, NULL, 1);
-        build_graphviz (root->right, graph);
-    }
+    // create a tree in graphviz
+    add_node_in_graph_1 (root, file_graph, &node_num);
+    add_node_in_graph_2 (root, file_graph);
+    fprintf (file_graph, "}");
+
+    system ("dot -Tpng graph.dot -o tree_graph.png");
+    system ("start tree_graph.png");
+
+    fclose (file_graph);
 }
 
-// Функция для сохранения графа в файл в формате DOT
-void save_graphviz (Agraph_t *graph, const char* filename)
+void add_node_in_graph_2 (struct node_tree* node, FILE* file_graph)
 {
-    FILE* file = fopen (filename, "w");
-    agwrite (graph, file);
-    fclose (file);
+    if (node->left != NULL)
+    {
+        fprintf (file_graph, "%d -> %d [ color = Peru ];\n", node->num_in_tree, (node->left)->num_in_tree);
+        add_node_in_graph_2 (node->left, file_graph);
+    }
+
+    if (node->right != NULL)
+    {
+        fprintf (file_graph, "%d -> %d [ color = Peru ];\n", node->num_in_tree, (node->right)->num_in_tree);
+        add_node_in_graph_2 (node->right, file_graph);
+    }
 }
-     */
+
+void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num)
+{
+
+    char* buffer = (char*)calloc(strlen(node->data) + 3, sizeof(char));
+    buffer[0] = '"';
+    strcat(buffer, node->data);                                                 //memcpy
+    buffer[strlen(node->data) + 1] = '"';
+
+    if (node->right == NULL && node->left == NULL)
+    {
+        fprintf (file_graph, "    %d [shape = Mrecord, style = filled, fillcolor = YellowGreen, label = ""%s"" ];\n", *node_num, buffer);
+        node->num_in_tree = *node_num;
+        //printf ("[%d]\n", node->num_in_tree);
+    }
+    else
+    {
+        fprintf (file_graph, "    %d [shape = Mrecord, style = filled, fillcolor = Peru, label = ""%s"" ];\n", *node_num, buffer);
+        node->num_in_tree = *node_num;
+    `   //printf ("[%d]\n", node->num_in_tree);
+    }
+    if (node->left != NULL)
+    {
+        *node_num += 1;
+        add_node_in_graph_1 (node->left, file_graph, node_num);
+    }
+
+    if (node->right != NULL)
+    {
+        *node_num += 1;
+        add_node_in_graph_1 (node->right, file_graph, node_num);
+    }
+
+}
+
+
