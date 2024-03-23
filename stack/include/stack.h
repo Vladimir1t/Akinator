@@ -7,7 +7,7 @@
 #include <string.h>
 #include "..\..\include\tree.h"
 
-#define SPEC_STK "%d"
+#define SPEC_STK "%s"
 
 typedef struct node_tree* elem_t_stk;
 const elem_t_stk POISON_STK = NULL;

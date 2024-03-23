@@ -166,9 +166,12 @@ void verifier (struct stack* stk)
 
 size_t stack_look (stack* stk, elem_t_stk* array)
 {
-    array = (elem_t_stk*) calloc (stk->size, sizeof (elem_t_stk));
-    memcpy (array, stk->data, sizeof (elem_t_stk) * stk->size);
+    //array = (elem_t_stk*) calloc (stk->size, sizeof (elem_t_stk));
+    //memcpy (array, stk->data, sizeof (elem_t_stk) * stk->size);
+    //for (int i = 0; i < stk->size; i++)
+    //    printf (SPEC_STK " ", array[i]->data);
     for (int i = 0; i < stk->size; i++)
-        printf (SPEC_STK "\n", array[i]);
+        printf (SPEC_STK " ", (stk->data[i])->data);
+    printf ("\n");
     return stk->size;
 }

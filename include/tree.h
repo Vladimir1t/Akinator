@@ -6,7 +6,6 @@
 #include <assert.h>
 #include <locale.h>
 #include <conio.h>
-//#include <graphviz/cgraph.h>
 
 #include "..\library\errors.h"
 #include "..\library\DSL.h"
@@ -37,11 +36,11 @@ int run_acinator (struct node_tree* node);
 
 void tree_dtor (struct node_tree* node);
 
-int node_search (struct node_tree* node, elem_t elem);
+void node_search (struct node_tree* node, elem_t elem, int* search_result, struct stack* stk_description);
 
 int node_insert (struct node_tree* node, struct node_tree* root);
 
-int add_discription (struct node_tree* node);
+int add_description (struct node_tree* node);
 
 void clean_buffer ();
 
@@ -58,9 +57,5 @@ int build_graphviz (struct node_tree* root);
 void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num);
 
 void add_node_in_graph_2 (struct node_tree* node, FILE* file_graph);
-
-//void save_graphviz (Agraph_t *graph, const char* filename);
-
-//void build_graphviz(struct node_tree* root, Agraph_t* graph);
 
 #endif // TREE_H_INCLUDED

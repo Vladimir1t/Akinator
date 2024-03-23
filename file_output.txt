@@ -1,1 +1,1 @@
-{human{dog{black{1,5}{valy}}{jack}}{blond{Physists{Ded}{Ovchos}}{mentor{Vova}{Alexey}}}}
+{human{dog{black{1,5}{valy}}{white{jack}{Martin}}}{blond{Physists{student{Linal{Ded}{Chubarov}}{Bulat}}{young{Ovchos}{Penkin}}}{mentor{Vova}{Alexey}}}}
