@@ -22,7 +22,7 @@ struct stack
 enum ReallocMod
 {
     REALLOC_OK  = 1,
-    REALLOC_ERR = 0
+    REALLOC_ERR = 0,
 };
 
 enum Errors

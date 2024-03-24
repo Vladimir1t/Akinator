@@ -5,52 +5,18 @@ int main(int argc, char* argv[])
     setlocale (LC_ALL, "Rus");
     FOPEN (file_output, "file_output.txt", "a")
 
-    struct node_tree* tree = NULL;
+    struct node_tree* tree = NULL;                             // make a root of the tree
     CALLOC (tree, struct node_tree, 1)
     CALLOC (tree->data, char, DATA_SIZE)
 
-
-    if (argc == 2 && get_database (tree, argv[1]) != SUCCESS)
+    if (argc == 2 && get_database (tree, argv[1]) != SUCCESS)  // fill tree with data
         return 0;
 
-    printf ("-- AKINATOR --\n");
+    run_acinator (tree, file_output);                          // run the acinator program
 
-    char mode = '\0';
-    while (mode != 's')
-    {
-        printf ("choose what you want to do:\n"
-                "'p' to play, 'f' to find an element or 's' to stop\n");
-        scanf ("%c", &mode);
-        clean_buffer ();
+    build_graphviz (tree);                                     // build tree in graphviz
 
-        switch (mode)
-        {
-            case 's':
-                break;
-
-            case 'p':
-                run_acinator (tree);
-                break;
-
-            case 'f':
-                printf ("find\n");
-                break;
-        }
-    }
-    printf ("do you want to add new data to a database?\n"
-            "( y, n )\n");
-
-    scanf ("%c", &mode);
-    if (mode == 'y')
-        tree_output (file_output, tree);
-
-
-    // Построить граф из дерева
-    build_graphviz (tree);
-
-
-
-    tree_dtor (tree);
+    tree_dtor (tree);                                          // destroy the tree
 
     return 0;
 }

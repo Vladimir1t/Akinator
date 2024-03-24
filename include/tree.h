@@ -21,7 +21,8 @@ const int DATA_SIZE = 17;
 enum Position
 {
     LEFT  = 0,
-    RIGHT = 1
+    RIGHT = 1,
+    ROOT  = 2,
 };
 
 struct node_tree
@@ -32,11 +33,13 @@ struct node_tree
     size_t            num_in_tree;
 };
 
-int run_acinator (struct node_tree* node);
+int run_acinator (struct node_tree* node, FILE* file_output);
+
+int play_acinator (struct node_tree* node);
 
 void tree_dtor (struct node_tree* node);
 
-void node_search (struct node_tree* node, elem_t elem, int* search_result, struct stack* stk_description);
+int node_search (struct node_tree* node, elem_t elem, int* search_result, struct stack* stk_description);
 
 int node_insert (struct node_tree* node, struct node_tree* root);
 
