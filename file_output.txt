@@ -1,6 +1,6 @@
 { 
 	"human" 
-	{ 
+	{ // Нет
 		"dog" 
 		{ 
 			"black" 
@@ -21,7 +21,7 @@
 			}
 		}
 	}
-	{ 
+	{ // Да
 		"blond" 
 		{ 
 			"Physists" 
@@ -47,9 +47,9 @@
 				}
 				{ 
 					"Penkin" 
+				}
 			}
 		}
-	}
 		{ 
 			"mentor" 
 			{ 

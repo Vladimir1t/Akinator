@@ -10,13 +10,16 @@
 #include "..\library\errors.h"
 #include "..\library\DSL.h"
 #include "..\stack\include\stack.h"
+#include "..\stack\include\stack_path.h"
 
 #define SPEC "%s"
 
 typedef char* elem_t;
+typedef int elem_t_path;
+
 const elem_t POISON = '\0';
 
-const int DATA_SIZE = 17;
+const int DATA_SIZE = 20;
 
 enum Position
 {
@@ -27,7 +30,7 @@ enum Position
 
 struct node_tree
 {
-    elem_t data;
+    elem_t            data;
     struct node_tree* left;
     struct node_tree* right;
     size_t            num_in_tree;
@@ -39,7 +42,9 @@ int play_acinator (struct node_tree* node);
 
 void tree_dtor (struct node_tree* node);
 
-int node_search (struct node_tree* node, elem_t elem, int* search_result, struct stack* stk_description);
+int node_search (struct node_tree* node, elem_t elem, struct stack_path* stk_path);
+
+int give_information (elem_t element, struct node_tree* node);
 
 int node_insert (struct node_tree* node, struct node_tree* root);
 
@@ -49,16 +54,12 @@ void clean_buffer ();
 
 int tree_output (FILE* file_output, struct node_tree* node);
 
-int get_database (struct node_tree*, char* file_input);
+int get_database (struct node_tree** root, char* file_input);
 
 int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_size);
 
 size_t file_size_measure (FILE* const file_p);
 
 int build_graphviz (struct node_tree* root);
-
-void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num);
-
-void add_node_in_graph_2 (struct node_tree* node, FILE* file_graph);
 
 #endif // TREE_H_INCLUDED

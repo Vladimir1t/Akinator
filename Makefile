@@ -3,7 +3,7 @@ All: tree
 	dot -Tpng graphviz\graph.dot -o graphviz\tree_graph.png
 	start graphviz\tree_graph.png
 
-tree: src\main.cpp src\tree.cpp stack\src\stack.cpp
-	g++ -o tree src\main.cpp src\tree.cpp stack\src\stack.cpp
+tree: src\main.cpp src\tree.cpp src\acinator.cpp src\input_output.cpp stack\src\stack.cpp stack\src\stack_path.cpp
+	g++ -o tree src\main.cpp src\tree.cpp stack\src\stack.cpp stack\src\stack_path.cpp src\acinator.cpp src\input_output.cpp
 
 

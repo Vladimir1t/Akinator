@@ -3,18 +3,6 @@
 
 /* Library of defines */
 
-//#define PUSH ()
-
-
-//#define POP ()
-
-
-//#define checkResult ()
-
-
-//#define procDump ()
-
-
 #define checkPtr(ptr)     \
     if (ptr == NULL)      \
         return NULL_PTR;  \
@@ -28,7 +16,7 @@
             return REALLOC_ERROR;                            \
         elem = (type*) clTmp;                                \
     }                                                        \
-    while (0);                                               \
+    while (0);
 
 
 #define CALLOC(elem, type, size)                     \
@@ -39,13 +27,14 @@
             return CALLOC_ERROR;                     \
         elem = (type*) clTmp;                        \
     }                                                \
-    while (0);                                       \
+    while (0);
 
 
-#define FOPEN(ptr, name, mode)       \
-    FILE* ptr = fopen (name, mode);  \
-    if (ptr == NULL)                 \
-        return OPEN_ERROR;           \
+#define FOPEN(ptr, name, mode)           \
+        FILE* ptr = fopen (name, mode);  \
+        if (ptr == NULL)                 \
+            return OPEN_ERROR;           \
+
 
 
 #endif // DSL_H_INCLUDED

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include "..\..\include\tree.h"
+#include "..\..\include\acinator.h"
 
 #define SPEC_STK "%s"
 
@@ -46,7 +46,5 @@ int stack_realloc_decrease (stack* stk);
 void verifier (stack* stk);
 
 void dump (stack* stk, FILE* file);
-
-size_t stack_look (stack* stk, elem_t_stk* array);
 
 #endif // stack_H_INCLUDED
