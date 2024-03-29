@@ -1,4 +1,4 @@
-All: tree
+all: tree
 	tree.exe file_output.txt
 	dot -Tpng graphviz\graph.dot -o graphviz\tree_graph.png
 	start graphviz\tree_graph.png

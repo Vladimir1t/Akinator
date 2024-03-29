@@ -1,6 +1,6 @@
 #include "..\include\acinator.h"
 
-static FILE* file_error = fopen ("Log\\file_error_input/output.txt", "w");
+static FILE* file_error = fopen ("Log\\file_error_input_output.txt", "w");
 
 static int add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num);
 
