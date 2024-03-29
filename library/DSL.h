@@ -1,7 +1,7 @@
 #ifndef DSL_H_INCLUDED
 #define DSL_H_INCLUDED
 
-/* Library of defines */
+  /* Library of defines */
 
 #define checkPtr(ptr)     \
     if (ptr == NULL)      \
@@ -16,7 +16,7 @@
             return REALLOC_ERROR;                            \
         elem = (type*) clTmp;                                \
     }                                                        \
-    while (0);
+    while (0)                                                \
 
 
 #define CALLOC(elem, type, size)                     \
@@ -27,14 +27,13 @@
             return CALLOC_ERROR;                     \
         elem = (type*) clTmp;                        \
     }                                                \
-    while (0);
+    while (0)                                        \
 
 
 #define FOPEN(ptr, name, mode)           \
         FILE* ptr = fopen (name, mode);  \
         if (ptr == NULL)                 \
             return OPEN_ERROR;           \
-
 
 
 #endif // DSL_H_INCLUDED

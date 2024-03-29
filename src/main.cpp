@@ -3,7 +3,7 @@
 int main(int argc, char* argv[])
 {
     setlocale (LC_ALL, "Rus");
-    FOPEN (file_output, "file_output.txt", "a")
+    FOPEN (file_output, "file_output.txt", "a");
 
     struct node_tree* tree = NULL;                             // make a root of the tree
 

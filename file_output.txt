@@ -1,62 +1,62 @@
-{ 
-	"human" 
-	{ // Нет
-		"dog" 
-		{ 
-			"black" 
-			{ 
-				"1,5" 
+{
+	"human"
+	{ // YES
+		"dog"
+		{
+			"black"
+			{
+				"1,5"
 			}
-			{ 
-				"valy" 
+			{
+				"valy"
 			}
 		}
-		{ 
-			"white" 
-			{ 
-				"jack" 
+		{
+			"white"
+			{
+				"jack"
 			}
-			{ 				
-				"Martin" 
+			{
+				"Martin"
 			}
 		}
 	}
-	{ // Да
-		"blond" 
-		{ 
-			"Physists" 
-			{ 
-				"student" 
-				{ 
-					"Linal" 
-					{ 
-						"Ded" 
+	{ // NO
+		"blond"
+		{
+			"Physists"
+			{
+				"student"
+				{
+					"Linal"
+					{
+						"Ded"
 					}
 					{
-						 "Chubarov" 
+						 "Chubarov"
 					}
 				}
-				{	
-					"Bulat" 
+				{
+					"Bulat"
 				}
 			}
-			{ 
-				"young" 
-				{ 
-					"Ovchos" 
+			{
+				"young"
+				{
+					"Ovchos"
 				}
-				{ 
-					"Penkin" 
+				{
+					"Penkin"
 				}
 			}
 		}
-		{ 
-			"mentor" 
-			{ 
-				"Vova" 
+		{
+			"mentor"
+			{
+				"Vova"
 			}
-			{ 
-				"Alexey" 
+			{
+				"Alexey"
 			}
 		}
 	}

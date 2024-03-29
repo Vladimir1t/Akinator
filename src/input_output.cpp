@@ -2,9 +2,9 @@
 
 static FILE* file_error = fopen ("Log\\file_error_input/output.txt", "w");
 
-static void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num);
+static int add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num);
 
-static void add_node_in_graph_2 (struct node_tree* node, FILE* file_graph);
+static int add_node_in_graph_2 (struct node_tree* node, FILE* file_graph);
 
 int tree_output (FILE* file_output, struct node_tree* node)
 {
@@ -22,15 +22,15 @@ int tree_output (FILE* file_output, struct node_tree* node)
 
 int get_database (struct node_tree** root, char* file_input)   // get data of tree in the following file
 {
-    CALLOC (*root, struct node_tree, 1)
-    CALLOC ((*root)->data, char, DATA_SIZE)
+    CALLOC (*root, struct node_tree, 1);
+    CALLOC ((*root)->data, char, DATA_SIZE);
 
-    FOPEN (file_p, file_input, "rb")
+    FOPEN (file_p, file_input, "rb");
     size_t file_size = file_size_measure (file_p);            // measures the size of a text
     //printf ("size of file: %d\n", file_size);
 
     char* text_data = NULL;
-    CALLOC (text_data, char, file_size + 1)
+    CALLOC (text_data, char, file_size + 1);
 
     size_t factual_size = fread (text_data, sizeof (char), file_size, file_p);
     if (factual_size != file_size)
@@ -51,6 +51,7 @@ int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_s
     struct node_tree* node      = NULL;
     struct stack      stk       = {0};
 
+    printf (" DATA_BASE \n");
     stack_ctor (&stk, 2);
     for (int i = 0, n = 0, position = ROOT; i < file_size; i++)
     {
@@ -76,8 +77,8 @@ int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_s
         if (text_data[i] == '{')                      // add node in tree
         {
             struct node_tree* node = NULL;
-            CALLOC (node, struct node_tree, 1)
-            CALLOC (node->data, char, DATA_SIZE)
+            CALLOC (node, struct node_tree, 1);
+            CALLOC (node->data, char, DATA_SIZE);
             n = 0;
             while (text_data[i] != '"')               // search for a beginning of a new word
                 i++;
@@ -113,6 +114,7 @@ int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_s
             position = RIGHT;
         }
     }
+    printf ("\n");
     stack_dtor (&stk);
 
     return SUCCESS;
@@ -123,7 +125,6 @@ size_t file_size_measure (FILE* const file_p)
     assert (file_p != NULL);
 
     int start_position = ftell (file_p);
-
     fseek (file_p, 0, SEEK_END);
     size_t len = (size_t) ftell (file_p);
 
@@ -138,7 +139,7 @@ int build_graphviz (struct node_tree* root)
     if (root == NULL)
         return ERROR;
 
-    FOPEN (file_graph, "graphviz\\graph.dot", "w")
+    FOPEN (file_graph, "graphviz\\graph.dot", "w");
 
     fprintf (file_graph, "digraph AKINATOR{\n"
                          "label = < AKINATOR >;\n"
@@ -146,15 +147,17 @@ int build_graphviz (struct node_tree* root)
                          "node [shape = record ];\n"
                          "edge [style = filled ];\n");
 
-      /*   create a tree in graphviz   */
+        /*   create a tree in graphviz   */
     add_node_in_graph_1 (root, file_graph, &node_num);
     add_node_in_graph_2 (root, file_graph);
     fprintf (file_graph, "}");
 
     fclose (file_graph);
+
+    return SUCCESS;
 }
 
-static void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num)
+static int add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t* node_num)
 {
 
     char* buffer = (char*) calloc (strlen (node->data) + 3, sizeof (char));
@@ -185,19 +188,23 @@ static void add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_
         *node_num += 1;
         add_node_in_graph_1 (node->right, file_graph, node_num);
     }
+
+    return SUCCESS;
 }
 
-static void add_node_in_graph_2 (struct node_tree* node, FILE* file_graph)
+static int add_node_in_graph_2 (struct node_tree* node, FILE* file_graph)
 {
     if (node->left != NULL)
     {
-        fprintf (file_graph, "%d -> %d[label = n] [ color = Peru ];\n", node->num_in_tree, (node->left)->num_in_tree);
+        fprintf (file_graph, "%d -> %d[label = \" no\"] [ color = Peru ];\n", node->num_in_tree, (node->left)->num_in_tree);
         add_node_in_graph_2 (node->left, file_graph);
     }
 
     if (node->right != NULL)
     {
-        fprintf (file_graph, "%d -> %d[label = y] [ color = Peru ];\n", node->num_in_tree, (node->right)->num_in_tree);
+        fprintf (file_graph, "%d -> %d[label = \" yes\"] [ color = Peru ];\n", node->num_in_tree, (node->right)->num_in_tree);
         add_node_in_graph_2 (node->right, file_graph);
     }
+
+    return SUCCESS;
 }

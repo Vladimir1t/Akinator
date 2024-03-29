@@ -44,7 +44,7 @@ void tree_dtor (struct node_tree* node);
 
 int node_search (struct node_tree* node, elem_t elem, struct stack_path* stk_path);
 
-int give_information (elem_t element, struct node_tree* node);
+int give_node_information (elem_t element, struct node_tree* node);
 
 int node_insert (struct node_tree* node, struct node_tree* root);
 
@@ -61,5 +61,7 @@ int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_s
 size_t file_size_measure (FILE* const file_p);
 
 int build_graphviz (struct node_tree* root);
+
+int compare_two_nodes (struct node_tree* root);
 
 #endif // TREE_H_INCLUDED
