@@ -4,10 +4,22 @@ Below is a README file for the "Acinator" program based on the provided files:
 
 # Acinator
 
+## Table of Contents
+- [Description](#Description)
+- [Files Included](#Files-Included)
+- [How to Compile](#how-to-compile)
+- [Running the Program](#Running-the-Program)
+- [Usage](#usage)
+- [Building Graphviz](#Building-Graphviz)
+- [Additional Notes](#additional-notes)
+- [Dependencies](#Dependencies)
+
+---
+
 ## Description
 "Acinator" is a simple program that implements a binary tree data structure to play a guessing game similar to the Akinator game. It allows users to play, find elements in the tree, compare nodes, and add new data to the database.
 
-## Files
+## Files Included
 - **acinator.cpp**: Contains the main logic of the "Acinator" program, including functions to run the game, play, find elements, compare nodes, and manage the tree.
 - **acinator.h**: Header file defining the structures and function prototypes used in "Acinator".
 - **input_output.cpp**: Handles input and output operations such as reading data from files, constructing the tree, and building the tree in Graphviz format.
@@ -17,7 +29,7 @@ Below is a README file for the "Acinator" program based on the provided files:
 - **stack.cpp**: Implements a stack for storing elements in the tree traversal process.
 - **DSL.h**: Contains common macros and definitions used across the program.
 
-## Compilation
+## How to Compile
 To compile the "Acinator" program, use the following commands (with Makefile):
 ```bash
 all: tree
