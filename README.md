@@ -46,7 +46,7 @@ After compilation, run the program using:
 ## Building Graphviz
 The program can build a Graphviz visualization of the binary tree. The resulting graph is stored in "graphviz/graph.dot".
 ---
-![Example Image](graphviz\tree_graph.png)
+![Example Image](graphviz\\tree_graph.png)
 ---
 ## Dependencies
 - The program uses standard C libraries like `stdio.h`, `stdlib.h`, `string.h`, and `assert.h`.
