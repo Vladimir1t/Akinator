@@ -11,7 +11,6 @@ Below is a README file for the "Acinator" program based on the provided files:
 - [Running the Program](#Running-the-Program)
 - [Usage](#usage)
 - [Building Graphviz](#Building-Graphviz)
-- [Additional Notes](#additional-notes)
 - [Dependencies](#Dependencies)
 
 ---
