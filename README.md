@@ -5,7 +5,7 @@ Below is a README file for the "Acinator" program based on the provided files:
 # Acinator
 
 ## Table of Contents
-- [Description](#Description)
+- [Overview](#Overview)
 - [Files Included](#Files-Included)
 - [How to Compile](#how-to-compile)
 - [Running the Program](#Running-the-Program)
@@ -16,7 +16,7 @@ Below is a README file for the "Acinator" program based on the provided files:
 
 ---
 
-## Description
+## Overview
 "Acinator" is a simple program that implements a binary tree data structure to play a guessing game similar to the Akinator game. It allows users to play, find elements in the tree, compare nodes, and add new data to the database.
 
 ## Files Included
