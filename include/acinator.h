@@ -15,13 +15,13 @@
 #define SPEC "%s"
 
 typedef char* elem_t;
-typedef int elem_t_path;
+typedef int   elem_t_path;
 
 const elem_t POISON = '\0';
 
 const int DATA_SIZE = 20;
 
-enum Position
+enum POSITION
 {
     LEFT  = 0,
     RIGHT = 1,

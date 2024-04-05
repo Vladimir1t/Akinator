@@ -139,8 +139,8 @@ int compare_two_nodes (struct node_tree* node)
     elem_t_path*      path_2     = NULL;
     size_t            len_path_2 = 0;
     struct stack_path stk_path_2 = {0};
-    char element_1[DATA_SIZE] = {0};
-    char element_2[DATA_SIZE] = {0};
+    char element_1[DATA_SIZE]    = {0};
+    char element_2[DATA_SIZE]    = {0};
 
     stack_path_ctor (&stk_path_1, 2);
     stack_path_ctor (&stk_path_2, 2);

@@ -6,20 +6,6 @@ static int add_node_in_graph_1 (struct node_tree* node, FILE* file_graph, size_t
 
 static int add_node_in_graph_2 (struct node_tree* node, FILE* file_graph);
 
-int tree_output (FILE* file_output, struct node_tree* node)
-{
-    fprintf (file_output, "{ \"" SPEC "\" ", node->data);
-    if (node->left != NULL)
-        tree_output (file_output, node->left);
-
-    if (node->right != NULL)
-        tree_output (file_output, node->right);
-
-    fprintf (file_output, "}");
-
-    return 0;
-}
-
 int get_database (struct node_tree** root, char* file_input)   // get data of tree in the following file
 {
     CALLOC (*root, struct node_tree, 1);
@@ -48,7 +34,7 @@ int get_database (struct node_tree** root, char* file_input)   // get data of tr
 int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_size)
 {
     struct node_tree* prev_node = NULL;
-    struct node_tree* node      = NULL;
+    //struct node_tree* node      = NULL;
     struct stack      stk       = {0};
 
     printf (" DATA_BASE \n");
@@ -207,4 +193,18 @@ static int add_node_in_graph_2 (struct node_tree* node, FILE* file_graph)
     }
 
     return SUCCESS;
+}
+
+int tree_output (FILE* file_output, struct node_tree* node)
+{
+    fprintf (file_output, "{ \"" SPEC "\" ", node->data);
+    if (node->left != NULL)
+        tree_output (file_output, node->left);
+
+    if (node->right != NULL)
+        tree_output (file_output, node->right);
+
+    fprintf (file_output, "}");
+
+    return 0;
 }

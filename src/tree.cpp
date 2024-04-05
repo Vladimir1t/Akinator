@@ -2,18 +2,6 @@
 
 static FILE* file_error = fopen ("Log\\file_error_tree.txt", "w");
 
-void tree_dtor (struct node_tree* node)
-{
-    if (node->left != NULL)
-        tree_dtor (node->left);
-
-    if (node->right != NULL)
-        tree_dtor (node->right);
-
-    node->data = POISON;
-    free (node);
-}
-
 int node_insert (struct node_tree* node, struct node_tree* root)
 {
     struct node_tree* node_new_left  = {0};
@@ -95,6 +83,18 @@ void clean_buffer ()
         symbol = getchar ();
     }
     while (symbol != '\n' && symbol != EOF);
+}
+
+void tree_dtor (struct node_tree* node)
+{
+    if (node->left != NULL)
+        tree_dtor (node->left);
+
+    if (node->right != NULL)
+        tree_dtor (node->right);
+
+    node->data = POISON;
+    free (node);
 }
 
 
