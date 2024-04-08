@@ -1,4 +1,4 @@
-Below is a README file for the "Acinator" program based on the provided files:
+Below is a README file for the "Akinator" program based on the provided files:
 
 ---
 
