@@ -2,7 +2,7 @@ Below is a README file for the "Acinator" program based on the provided files:
 
 ---
 
-# Acinator
+# Akinator
 
 ## Table of Contents
 - [Overview](#Overview)
@@ -16,11 +16,11 @@ Below is a README file for the "Acinator" program based on the provided files:
 ---
 
 ## Overview
-"Acinator" is a simple program that implements a binary tree data structure to play a guessing game similar to the Akinator game. It allows users to play, find elements in the tree, compare nodes, and add new data to the database.
+"Akinator" is a simple program that implements a binary tree data structure to play a guessing game similar to the Akinator game. It allows users to play, find elements in the tree, compare nodes, and add new data to the database.
 
 ## Files Included
-- **acinator.cpp**: Contains the main logic of the "Acinator" program, including functions to run the game, play, find elements, compare nodes, and manage the tree.
-- **acinator.h**: Header file defining the structures and function prototypes used in "Acinator".
+- **akinator.cpp**: Contains the main logic of the "Akinator" program, including functions to run the game, play, find elements, compare nodes, and manage the tree.
+- **akinator.h**: Header file defining the structures and function prototypes used in "Acinator".
 - **input_output.cpp**: Handles input and output operations such as reading data from files, constructing the tree, and building the tree in Graphviz format.
 - **main.cpp**: Main entry point of the program where the "Acinator" game is executed.
 - **tree.cpp**: Implements functions related to the binary tree operations such as insertion, searching, and destruction.
@@ -29,15 +29,15 @@ Below is a README file for the "Acinator" program based on the provided files:
 - **DSL.h**: Contains common macros and definitions used across the program.
 
 ## How to Compile
-To compile the "Acinator" program, use the following commands (with Makefile):
+To compile the "Akinator" program, use the following commands (with Makefile):
 ```bash
-all: tree
-	tree.exe file_output.txt
+all: akintor
+	akintor.exe file_output.txt
 	dot -Tpng graphviz\graph.dot -o graphviz\tree_graph.png
 	start graphviz\tree_graph.png
 
-tree: src\main.cpp src\tree.cpp src\acinator.cpp src\input_output.cpp stack\src\stack.cpp stack\src\stack_path.cpp
-	g++ -o tree src\main.cpp src\tree.cpp stack\src\stack.cpp stack\src\stack_path.cpp src\acinator.cpp src\input_output.cpp
+tree: src\main.cpp src\tree.cpp src\akinator.cpp src\input_output.cpp stack\src\stack.cpp stack\src\stack_path.cpp
+	g++ -o akintor src\main.cpp src\tree.cpp stack\src\stack.cpp stack\src\stack_path.cpp src\akinator.cpp src\input_output.cpp
 
 
 ```
@@ -45,9 +45,9 @@ tree: src\main.cpp src\tree.cpp src\acinator.cpp src\input_output.cpp stack\src\
 ## Running the Program
 After compilation, run the program using:
 ```bash
-./acinator file_output.txt
+./akinator file_output.txt
 ```
-- `file_output.txt` is the file containing the initial database for the "Acinator" game.
+- `file_output.txt` is the file containing the initial database for the "Akinator" game.
 
 ## Usage
 - The program provides options to play the guessing game ('p'), find an element ('f'), compare two nodes ('c'), or stop ('s').
