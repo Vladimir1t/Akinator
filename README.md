@@ -31,13 +31,13 @@ Below is a README file for the "Akinator" program based on the provided files:
 ## How to Compile
 To compile the "Akinator" program, use the following commands (with Makefile):
 ```bash
-all: akintor
-	akintor.exe file_output.txt
+all: akinator
+	akinator.exe file_output.txt
 	dot -Tpng graphviz\graph.dot -o graphviz\tree_graph.png
 	start graphviz\tree_graph.png
 
-tree: src\main.cpp src\tree.cpp src\akinator.cpp src\input_output.cpp stack\src\stack.cpp stack\src\stack_path.cpp
-	g++ -o akintor src\main.cpp src\tree.cpp stack\src\stack.cpp stack\src\stack_path.cpp src\akinator.cpp src\input_output.cpp
+akinator: src\main.cpp src\tree.cpp src\akinator.cpp src\input_output.cpp stack\src\stack.cpp stack\src\stack_path.cpp
+	g++ -o akinator src\main.cpp src\tree.cpp stack\src\stack.cpp stack\src\stack_path.cpp src\akinator.cpp src\input_output.cpp
 
 
 ```
