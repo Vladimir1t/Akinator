@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include "..\..\include\acinator.h"
+#include "..\..\include\akinator.h"
 
 #define SPEC_STK "%s"
 

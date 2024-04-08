@@ -1,4 +1,4 @@
-#include "..\include\acinator.h"
+#include "..\include\akinator.h"
 
 static FILE* file_error = fopen ("Log\\file_error_tree.txt", "w");
 
@@ -73,16 +73,6 @@ int node_search (struct node_tree* node, elem_t elem, stack_path* stk_path)
             return SUCCESS;
         stack_path_pop (stk_path, &wrong_node);
     }
-}
-
-void clean_buffer ()
-{
-    int symbol = 0;
-    do
-    {
-        symbol = getchar ();
-    }
-    while (symbol != '\n' && symbol != EOF);
 }
 
 void tree_dtor (struct node_tree* node)

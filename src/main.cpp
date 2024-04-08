@@ -1,4 +1,4 @@
-#include "..\include\acinator.h"
+#include "..\include\akinator.h"
 
 int main(int argc, char* argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     if (argc == 2 && get_database (&tree, argv[1]) != SUCCESS)  // fill tree with data
         return 0;
 
-    run_acinator (tree, file_output);                          // run the acinator program
+    run_akinator (tree, file_output);                          // run the acinator program
 
     build_graphviz (tree);                                     // build tree in graphviz
 

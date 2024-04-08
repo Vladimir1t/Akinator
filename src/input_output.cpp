@@ -1,4 +1,4 @@
-#include "..\include\acinator.h"
+#include "..\include\akinator.h"
 
 static FILE* file_error = fopen ("Log\\file_error_input_output.txt", "w");
 
@@ -34,7 +34,6 @@ int get_database (struct node_tree** root, char* file_input)   // get data of tr
 int construct_data_nodes (struct node_tree* root, char* text_data, size_t file_size)
 {
     struct node_tree* prev_node = NULL;
-    //struct node_tree* node      = NULL;
     struct stack      stk       = {0};
 
     printf (" DATA_BASE \n");

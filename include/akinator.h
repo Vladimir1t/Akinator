@@ -36,9 +36,9 @@ struct node_tree
     size_t            num_in_tree;
 };
 
-int run_acinator (struct node_tree* node, FILE* file_output);
+int run_akinator (struct node_tree* node, FILE* file_output);
 
-int play_acinator (struct node_tree* node);
+int play_akinator (struct node_tree* node);
 
 void tree_dtor (struct node_tree* node);
 
@@ -64,4 +64,6 @@ int build_graphviz (struct node_tree* root);
 
 int compare_two_nodes (struct node_tree* root);
 
+int find_nodes_differences (int ptr, struct node_tree* node, size_t len_path_1, elem_t_path* path_1,
+                                                             size_t len_path_2, elem_t_path* path_2);
 #endif // TREE_H_INCLUDED

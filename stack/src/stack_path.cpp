@@ -169,6 +169,6 @@ size_t stack_look (stack_path* stk, elem_t_path** array)
     *array = (elem_t_path*) calloc (stk->size, sizeof (elem_t_path));
     memcpy (*array, stk->data, sizeof (elem_t_path) * stk->size);
     //printf (" < node path > \n");
-    printf ("\n");
+    //printf ("\n");
     return stk->size;
 }
