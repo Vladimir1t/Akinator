@@ -20,9 +20,9 @@ Below is a README file for the "Akinator" program based on the provided files:
 
 ## Files Included
 - **akinator.cpp**: Contains the main logic of the "Akinator" program, including functions to run the game, play, find elements, compare nodes, and manage the tree.
-- **akinator.h**: Header file defining the structures and function prototypes used in "Acinator".
+- **akinator.h**: Header file defining the structures and function prototypes used in "Akinator".
 - **input_output.cpp**: Handles input and output operations such as reading data from files, constructing the tree, and building the tree in Graphviz format.
-- **main.cpp**: Main entry point of the program where the "Acinator" game is executed.
+- **main.cpp**: Main entry point of the program where the "Akinator" game is executed.
 - **tree.cpp**: Implements functions related to the binary tree operations such as insertion, searching, and destruction.
 - **stack_path.cpp**: Provides a stack implementation for storing paths in the tree.
 - **stack.cpp**: Implements a stack for storing elements in the tree traversal process.
@@ -68,4 +68,4 @@ This program was created as a project for learning purposes.
 
 ---
 
-This README provides an overview of the "Acinator" program, its files, compilation, usage, and other relevant information. Please adjust the details as needed for your specific implementation.
+This README provides an overview of the "Akinator" program, its files, compilation, usage, and other relevant information. Please adjust the details as needed for your specific implementation.
