@@ -1,7 +1,3 @@
-Below is a README file for the "Akinator" program based on the provided files:
-
----
-
 # Akinator
 
 ## Table of Contents
