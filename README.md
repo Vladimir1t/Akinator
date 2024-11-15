@@ -56,12 +56,8 @@ The program can build a Graphviz visualization of the binary tree. The resulting
 ![Example Image](graphviz/tree_graph.png)
 ---
 ## Dependencies
-- The program uses standard C libraries like `stdio.h`, `stdlib.h`, `string.h`, and `assert.h`.
+- The program uses standard C libraries 
 - Graphviz (optional) is needed to generate a visualization of the binary tree.
 
 ## Credits
 This program was created as a project for learning purposes.
-
----
-
-This README provides an overview of the "Akinator" program, its files, compilation, usage, and other relevant information. Please adjust the details as needed for your specific implementation.
